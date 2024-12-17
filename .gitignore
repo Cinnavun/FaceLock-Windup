@@ -7,3 +7,8 @@ facelock/
 *.jpg
 *.csv
 *.out
+.gemini/
+gha-creds-*.json
+# pixi environments
+.pixi/*
+!.pixi/config.toml
