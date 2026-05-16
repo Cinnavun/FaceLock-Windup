@@ -14,7 +14,7 @@ This is an experimental fork of the original repository - https://github.com/tac
   </tr>
 </table>
 
-This is a fork of the official repository for the paper, [Edit Away and My Face Will not Stay: Personal Biometric Defense against Malicious Generative Editing](https://arxiv.org/abs/2411.16832).
+Welcomew to the unofficial repository for the paper, [Edit Away and My Face Will not Stay: Personal Biometric Defense against Malicious Generative Editing](https://arxiv.org/abs/2411.16832).
 
 
 ## Abstract
