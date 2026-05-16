@@ -4,17 +4,34 @@ channels = ["conda-forge", "pytorch", "nvidia", "main"]
 name = "FaceLock"
 platforms = ["win-64", "linux-64"]
 version = "0.1.0"
-[system-requirements]
-cuda = "12.8"
+
+[environments]
+cu12 = { features = ["windows", "cuda12"] }
+cu13 = { features = ["windows", "cuda13"] }
+linux = { features = ["linux"] }
 
 [tasks]
 build = "make build"
 
-[target.win-64.dependencies]
-python = ">=3.10"
-pytorch = ">=2.3"
-pytorch-cuda = "*"
-torchvision = ">=0.18.0"
+[feature.cuda12.system-requirements]
+cuda = "12.8"
+
+[feature.cuda12.pypi-dependencies]
+torch = { index = "https://download.pytorch.org/whl/cu128" }
+torchvision = { index = "https://download.pytorch.org/whl/cu128" }
+
+[feature.cuda13.system-requirements]
+cuda = "13.2"
+
+[feature.cuda13.pypi-dependencies]
+torch = { index = "https://download.pytorch.org/whl/nightly/cu132/torch/" }
+torchvision = { index = "https://download.pytorch.org/whl/nightly/cu132/" }
+
+[feature.windows]
+platforms = ["win-64"]
+
+[feature.windows.dependencies]
+python = "3.12.*"
 cudnn = ">=8.9.7"
 numpy = "1.26.4.*"
 pandas = "2.2.2.*"
@@ -23,14 +40,14 @@ matplotlib = "3.9.1.*"
 transformers = "4.42.3.*"
 huggingface_hub = "0.23.4.*"
 datasets = "2.14.4.*"
-accelerate = "0.31.0.*"
-ipykernel = "6.29.5.*"
-pillow = "10.4.0.*"
-pyyaml = "6.0.1.*"
-tqdm = "4.66.4.*"
-safetensors = "0.4.3.*"
+accelerate = "*"
+ipykernel = ">=6.29.5"
+pillow = ">=10.4.0"
+pyyaml = ">=6.0.1"
+tqdm = "4.66.4"
+safetensors = ">=0.4.3"
 
-[target.win-64.pypi-dependencies]
+[feature.windows.pypi-dependencies]
 antlr4-python3-runtime = "==4.9.3"
 bleach = "==6.1.0"
 diffusers = "==0.31.0"
@@ -40,7 +57,7 @@ kornia = "==0.7.3"
 kornia-rs = "==0.1.5"
 lazy-loader = "==0.4"
 lightning-utilities = "==0.11.5"
-lpips = "==0.1.4"
+lpips = ">=0.1.4"
 omegaconf = "==2.3.0"
 opencv-python = "==4.10.0.84"
 protobuf = "==5.28.3"
@@ -54,8 +71,10 @@ torch-fidelity = "==0.3.0"
 torchmetrics = "==1.4.0.post0"
 webencodings = "==0.5.1"
 
+[feature.linux]
+platforms = ["linux-64"]
 
-[target.linux-64.dependencies]
+[feature.linux.dependencies]
 python = ">=3.10"
 cudnn = ">=8.9.7"
 _libgcc_mutex = "*"
@@ -198,9 +217,9 @@ libsqlite = "3.46.0.*"
 libssh2 = "1.11.0.*"
 libstdcxx-ng = "14.1.0.*"
 libsystemd0 = "255.*"
-libthrift = "0.19.0"
-libtiff = "4.6.0"
-libtorch = "2.3"
+libthrift = "0.19.0.*"
+libtiff = "4.6.0.*"
+libtorch = "2.3.*"
 libutf8proc = "2.8.0.*"
 libuuid = "2.38.1.*"
 libuv = "1.48.0.*"
@@ -321,7 +340,7 @@ zeromq = "4.3.5.*"
 zipp = "3.19.2.*"
 zstandard = "0.22.0.*"
 
-[target.linux-64.pypi-dependencies]
+[feature.linux.pypi-dependencies]
 torchvision = ">=0.18.0"
 antlr4-python3-runtime = "==4.9.3"
 bleach = "==6.1.0"

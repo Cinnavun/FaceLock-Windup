@@ -12,3 +12,4 @@ gha-creds-*.json
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+gitignore/*
