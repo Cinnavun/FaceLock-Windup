@@ -19,6 +19,7 @@ cuda = "12.8"
 [feature.cuda12.pypi-dependencies]
 torch = { index = "https://download.pytorch.org/whl/cu128" }
 torchvision = { index = "https://download.pytorch.org/whl/cu128" }
+nvidia-cudnn-cu12 = { index = "https://download.pytorch.org/whl/cu128" }
 
 [feature.cuda13.system-requirements]
 cuda = "13.2"
@@ -30,6 +31,7 @@ extra-index-urls = ["https://download.pytorch.org/whl/nightly/cu132"]
 [feature.cuda13.pypi-dependencies]
 torch = { version = ">=2.11.0.dev", index = "https://download.pytorch.org/whl/nightly/cu132/" }
 torchvision = { version = ">=0.27.0dev", index = "https://download.pytorch.org/whl/nightly/cu132/" }
+nvidia-cudnn-cu13 = { version = ">=9.22.0", index = "https://download.pytorch.org/whl/nightly/cu132/" }
 
 [feature.windows]
 platforms = ["win-64"]
